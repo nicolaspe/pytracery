@@ -44,8 +44,22 @@ def ed(text, *params):
     elif text[-1] in "yY":
         if text[-2] not in "aeiouAEIOU":
             return text[:-1] + "ied"
+        else:
+            return text + "ed"
     else:
         return text + "ed"
+
+    
+def ing(text, *params):
+    if text[-1] in 'eE':
+        return text[:-1] + "ing"
+    elif text[-1] in 'bgmnptBGMNPT' and len(text) <= 4:
+        if text[-2] in "aeiouAEIOU" and text[-3] not in "aeiouAEIOU":
+            return text + text[-1] + "ing"
+        else:
+            return text + "ing"
+    else:
+        return text + "ing"    
 
 
 def uppercase(text, *params):
@@ -64,6 +78,7 @@ base_english = {
     'firstS': firstS,
     's': s,
     'ed': ed,
+    'ing': ing,
     'uppercase': uppercase,
     'lowercase': lowercase
 }
